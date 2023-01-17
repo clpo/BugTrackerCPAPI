@@ -1,4 +1,5 @@
 # BugTrackerCPAPI
+.net6 Function v4 app.
 
 ## Endpoints
 - Get http://localhost:7178/api/bug
@@ -32,6 +33,7 @@ with body:
 - Delete http://localhost:7178/api/assignee
 
 ## Instructions for running
+Download and install Visual Studio/Visual Studio Code and install .net6 and azure functions sdks.
 Clone repo and open solution and run debug.
 The API will need to be running on Port 7178 for the front end to find it.
 You may need to install Microsoft Azure Storage Explorer in order to explore the Tables that are being used for persistence.
