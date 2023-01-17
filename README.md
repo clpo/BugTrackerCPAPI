@@ -34,6 +34,7 @@ with body:
 ## Instructions for running
 Clone repo and open solution and run debug.
 The API will need to be running on Port 7178 for the front end to find it.
+You may need to install Microsoft Azure Storage Explorer in order to explore the Tables that are being used for persistence.
 
 ## Future work
 If I gave this more time I would:
