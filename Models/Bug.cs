@@ -78,7 +78,9 @@ namespace BugTrackerCPAPI.Models
                 Created = this.Created,
                 LastUpdated = this.LastUpdated,
                 Status = this.Status,
-                Assignees = assigneesFromEntity.Select(x => assignees.Single(assignee => assignee.Id == Guid.Parse(x)))
+                Assignees = assigneesFromEntity
+                    .Select(x => 
+                        assignees.Any(assignee => assignee.Id == Guid.Parse(x)) ? assignees.Single(assignee => assignee.Id == Guid.Parse(x)) : new Assignee(name: "Deleted Assignee") { Id = Guid.Parse(x) })
             };
         }
     }
