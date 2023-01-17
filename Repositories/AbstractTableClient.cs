@@ -2,6 +2,7 @@
 using Azure.Data.Tables;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BugTrackerCPAPI.Repositories
@@ -11,6 +12,7 @@ namespace BugTrackerCPAPI.Repositories
         Task<IEnumerable<T>> Get<T>() where T : class, ITableEntity, new();
         Task Create(T item);
         Task Delete(Guid id);
+        Task<bool> IsEmpty<T>() where T : class, ITableEntity, new();
     }
 
 
@@ -50,6 +52,13 @@ namespace BugTrackerCPAPI.Repositories
                 }
             }
             return items;
+        }
+
+        public async Task<bool> IsEmpty<T>() where T : class, ITableEntity, new()
+        {
+            await _tableClient.CreateIfNotExistsAsync();
+            var allItems = await Get<T>();
+            return allItems.Count() == 0;
         }
     }
 }
